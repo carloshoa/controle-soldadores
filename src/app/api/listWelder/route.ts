@@ -1,8 +1,8 @@
-import { NextApiResponse } from "next";
+import { NextApiRequest, NextApiResponse } from "next";
 import { NextResponse } from "next/server";
 import { listWelder } from "../db/listWelder/route";
 
-export async function GET(req: any, res: NextApiResponse) {
+export async function GET(req: NextApiRequest, res: NextApiResponse) {
 
   try {
 
