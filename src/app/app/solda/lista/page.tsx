@@ -14,19 +14,17 @@ const App = async () => {
 
   const getWelder = async () => {
     try {
-      const resposta = await axios.get('http://localhost:3000/api/listWelder', {
-        headers: {
-          "Content-Type": "application/json"
-        },
-      })
-      
+      console.log('antes da requisicação para axios....')
+      const resposta = await axios.post('http://localhost:3000/api/listWelder')
+
+      console.log('depois  da requisicação para axios....')
       setListWelder(resposta.data)
 
     } catch (error) {
       console.log(error)
     }
   }
-  
+
   useEffect(() => {
     getWelder()
     setActive(true)

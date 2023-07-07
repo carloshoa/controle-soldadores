@@ -1,9 +1,9 @@
 import prisma from "@/app/lib/prisma";
 
-export async function listWelder(sinete?: string) {
+export const listWelder = async (sinete?: string) => {
 
   try {
-
+    console.log("chegou na requisição do prisma! ..........")
     const list = await prisma.welder.findMany({
       where: {
         sinete: {
@@ -11,6 +11,7 @@ export async function listWelder(sinete?: string) {
         }
       }
     })
+    console.log("passou da requisição do prisma! ..........")
 
     return list
 

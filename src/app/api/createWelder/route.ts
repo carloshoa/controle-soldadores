@@ -1,4 +1,4 @@
-import { createWelder } from "@/app/api/db/createWelder/route";
+import { createWelder } from "@/app/db/createWelder/route";
 import { NextApiResponse } from "next";
 import { NextResponse } from "next/server";
 

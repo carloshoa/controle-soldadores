@@ -1,12 +1,14 @@
-import { NextApiRequest, NextApiResponse } from "next";
+import { listWelder } from "@/app/db/listWelder/route";
 import { NextResponse } from "next/server";
-import { listWelder } from "../db/listWelder/route";
 
-export async function GET(req: NextApiRequest, res: NextApiResponse) {
+export async function POST(req: any, res: any) {
+  console.log('chegou antes do try catch')
 
   try {
 
+    console.log('chegou na api...')
     const list = await listWelder()
+    console.log('passou na api...')
 
     if (list instanceof Error) {
 
@@ -20,9 +22,8 @@ export async function GET(req: NextApiRequest, res: NextApiResponse) {
 
     return NextResponse.json({
       'error': error.message
-    }, {
-      status: 300
-    })
+    },
+    )
 
 
   }

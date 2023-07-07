@@ -1,8 +1,9 @@
-import { NextApiRequest, NextApiResponse } from "next";
+import { listWelder } from "@/app/db/listWelder/route";
+import { NextApiResponse } from "next";
 import { NextResponse } from "next/server";
-import { listWelder } from "../../db/listWelder/route";
 
-export async function GET(req: NextApiRequest, res: NextApiResponse) {
+
+export async function GET(req: Request, res: NextApiResponse) {
 
   const arraySinete = req.url?.split('/')!
   const sinete = arraySinete[arraySinete.length - 1]
@@ -25,7 +26,7 @@ export async function GET(req: NextApiRequest, res: NextApiResponse) {
     return NextResponse.json({
       'error': error.message
     }, {
-      status: 300
+      status: 501
     })
 
   }
