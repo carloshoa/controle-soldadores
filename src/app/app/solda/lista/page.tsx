@@ -14,11 +14,9 @@ const App = async () => {
 
   const getWelder = async () => {
     try {
-      console.log('antes da requisicação para axios....')
 
       const resposta = await axios.post('https://controle-soldadores-tbt.vercel.app/api/listWelder')
 
-      console.log('depois  da requisicação para axios....')
       setListWelder(resposta.data)
 
     } catch (error) {

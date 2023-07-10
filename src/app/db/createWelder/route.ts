@@ -49,6 +49,7 @@ export async function createWelder(dataWelder: IFormInput) {
       }
     })
 
+    console.log("retorno do ExistWelder ..", ExistWelder)
     if (ExistWelder.length) {
 
       throw Error(`já existe soldador com os dados informado, ${ExistWelder}`)
