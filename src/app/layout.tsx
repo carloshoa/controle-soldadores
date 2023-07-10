@@ -1,7 +1,11 @@
 'use client'
 import { Inter } from 'next/font/google'
+// import * as google from '@next/font/google'
 import Provider from './(componentes)/Provider'
 import './globals.css'
+
+
+// const roboto = google.Roboto({ subsets: ['latin'] })
 
 const inter = Inter({ subsets: ['greek'] })
 
