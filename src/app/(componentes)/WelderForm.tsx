@@ -56,7 +56,7 @@ const App = async () => {
   const onSubmit: SubmitHandler<IFormInput> = async (data) => {
     console.log('dados do formulario', data)
     try {
-      const resposta = await axios.post('http://localhost:3000/api/createWelder', {
+      const resposta = await axios.post('https://controle-soldadores-tbt.vercel.app/api/listWelder', {
         data,
         headers: {
           "Content-Type": "application/json"
