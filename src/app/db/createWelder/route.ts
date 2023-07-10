@@ -20,8 +20,9 @@ interface IFormInput {
 export async function createWelder(dataWelder: IFormInput) {
 
   const processos = []
-  if (dataWelder.data.SMAW)
+  if (dataWelder.data.SMAW) {
     processos.push('SMAW');
+  }
   if (dataWelder.data.FCAW) {
     processos.push('FCAW');
   }
@@ -48,7 +49,7 @@ export async function createWelder(dataWelder: IFormInput) {
       }
     })
 
-    if (!!ExistWelder.length) {
+    if (ExistWelder.length) {
 
       throw Error(`já existe soldador com os dados informado, ${ExistWelder}`)
 

@@ -12,7 +12,7 @@ export async function POST(req: any, res: NextApiResponse) {
 
     if (welder instanceof Error) {
 
-      console.log('chegou aqui fora do catach deu erro...', { welder })
+      console.log('chegou aqui fora do catch deu erro...', { welder })
       throw new Error('Soldador já cadastrado')
     } else {
 
@@ -31,7 +31,7 @@ export async function POST(req: any, res: NextApiResponse) {
     return NextResponse.json({
       'error': error.message
     }, {
-      status: 300
+      status: 500
     })
 
 
