@@ -1,6 +1,7 @@
 'use client'
 import { yupResolver } from "@hookform/resolvers/yup"
 import axios from "axios"
+import { usePathname } from "next/navigation"
 import { useEffect, useState } from "react"
 import { SubmitHandler, useForm } from "react-hook-form"
 import * as yup from "yup"
@@ -38,6 +39,8 @@ const welderSchema = yup
 const App = async () => {
 
   const [showModal, setShowModal] = useState(false)
+  const Path = usePathname()
+  console.log('testando use path....', Path)
   const { register, handleSubmit, formState, setError, watch, } = useForm<IFormInput>({
     resolver: async (data, context, options) => {
       // you can debug your validation schema here
@@ -52,7 +55,6 @@ const App = async () => {
 
   const onSubmit: SubmitHandler<IFormInput> = async (data) => {
     console.log('dados do formulario', data)
-
     try {
       const resposta = await axios.post('http://localhost:3000/api/createWelder', {
         data,
