@@ -1,6 +1,6 @@
 export const EMAIL_AUTHORIZED = {
-  email:  {
+  email: {
     carlos: 'carloshoarantes@gmail.com',
-    renan: 'renanranzani@gmail.com'
-    }
+    renan: 'eng.renanranzani@gmail.com'
+  }
 }
