@@ -38,7 +38,7 @@ const App = async () => {
     <form className="flex flex-col justify-center w-fit space-y-3 md:flex-row md:w-full md:space-x-3 md:space-y-0">
       <div className="flex flex-col w-full">
         <div className="flex flex-col w-full">
-          <div className="m-2 w-full">
+          <div className="m-2 w-full center pr-4">
             <input type="text" id="&quot;form-subscribe-Subscribe" className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Nome" />
           </div>
           <div className="flex flex-row ">
@@ -50,7 +50,7 @@ const App = async () => {
             </div>
           </div>
         </div>
-        <div className="p-5 flex flex-row flex-wrap justify-center center content-center ">
+        <div className="p-5 flex flex-row justify-between mx-10">
           <div className="flex items-center gap-8">
             <label className="inline-flex items-center">
               <input type="radio" name="status" className="w-5 h-5 text-red-600" />
@@ -64,7 +64,7 @@ const App = async () => {
                 Desligado
               </span>
             </label><label className="inline-flex items-center">
-              <input type="radio" name="status" className="w-5 h-5 text-red-600" />
+              <input type="radio" defaultChecked name="status" className="w-5 h-5 text-red-600" />
               <span className="ml-2 text-gray-700">
                 Todos
               </span>
@@ -90,9 +90,9 @@ const App = async () => {
               </span>
             </label>
             <label className="inline-flex items-center">
-              <input type="radio" name="processo" className="w-5 h-5 text-red-600" />
+              <input type="radio" defaultChecked name="processo" className="w-5 h-5 text-red-600" />
               <span className="ml-2 text-gray-700">
-                TODOS
+                Todos
               </span>
             </label>
           </div>
