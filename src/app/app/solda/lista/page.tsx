@@ -50,32 +50,49 @@ const App = async () => {
             </div>
           </div>
         </div>
-        <div className="p-5 flex flex-row ">
+        <div className="p-5 flex flex-row flex-wrap justify-center center content-center ">
           <div className="flex items-center gap-8">
             <label className="inline-flex items-center">
-              <input type="radio" name="vehicle" className="w-5 h-5 text-red-600" />
+              <input type="radio" name="status" className="w-5 h-5 text-red-600" />
               <span className="ml-2 text-gray-700">
-                Car
+                Ativo
               </span>
             </label>
             <label className="inline-flex items-center">
-              <input type="radio" name="vehicle" className="w-5 h-5 text-red-600" />
+              <input type="radio" name="status" className="w-5 h-5 text-red-600" />
               <span className="ml-2 text-gray-700">
-                Cycle
+                Desligado
+              </span>
+            </label><label className="inline-flex items-center">
+              <input type="radio" name="status" className="w-5 h-5 text-red-600" />
+              <span className="ml-2 text-gray-700">
+                Todos
               </span>
             </label>
           </div>
           <div className="flex items-center gap-8">
             <label className="inline-flex items-center">
-              <input type="radio" name="vehicle" className="w-5 h-5 text-red-600" />
+              <input type="radio" name="processo" className="w-5 h-5 text-red-600" />
               <span className="ml-2 text-gray-700">
-                Car
+                GTAW
               </span>
             </label>
             <label className="inline-flex items-center">
-              <input type="radio" name="vehicle" className="w-5 h-5 text-red-600" />
+              <input type="radio" name="processo" className="w-5 h-5 text-red-600" />
               <span className="ml-2 text-gray-700">
-                Cycle
+                FCAW
+              </span>
+            </label>
+            <label className="inline-flex items-center">
+              <input type="radio" name="processo" className="w-5 h-5 text-red-600" />
+              <span className="ml-2 text-gray-700">
+                SMAW
+              </span>
+            </label>
+            <label className="inline-flex items-center">
+              <input type="radio" name="processo" className="w-5 h-5 text-red-600" />
+              <span className="ml-2 text-gray-700">
+                TODOS
               </span>
             </label>
           </div>
