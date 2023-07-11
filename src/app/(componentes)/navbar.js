@@ -14,26 +14,26 @@ const Navbar = () => {
   ];
 
   return (
-    <div className="w-full">
-      <nav className="container relative flex flex-wrap items-center justify-between p-8 mx-auto lg:justify-between xl:px-0">
+    <div className="w-full bg-gray-200">
+      <nav className="container relative flex flex-wrap items-center justify-between p-3 mx-auto lg:justify-between xl:px-0">
         {/* Logo  */}
         <Disclosure>
           {({ open }) => (
             <>
               <div className="flex flex-wrap items-center justify-between w-full lg:w-auto">
-                <Link href="/">
-                  <span className="flex items-center space-x-2 text-2xl font-medium text-indigo-500 dark:text-gray-100">
-                    <span className="p-8">
+                <Link href="/" className='w-full ml-10'>
+                  {/* <span className="flex items-center space-x-2 text-2xl font-medium text-indigo-500 dark:text-gray-100"> */}
+                    {/* <span className="ml-5"> */}
                       <Image
-                        src="/img/logo-tbt.png"
+                        src="/img/logo-tbt-removebg-preview.png"
                         alt="N"
-                        width="500"
-                        height="500"
-                        className="w-8"
+                        width="100"
+                        height="100"
+                        className="w-full bg-none"
                       />
-                    </span>
-                    <span>TBT Engenharia</span>
-                  </span>
+                    {/* </span> */}
+                    {/* <span className="text-black">TBT Engenharia</span> */}
+                  {/* </span> */}
                 </Link>
 
                 <Disclosure.Button
@@ -89,13 +89,13 @@ const Navbar = () => {
           </ul>
         </div>
 
-        <div className="hidden mr-3 space-x-4 lg:flex nav__item">
-        <div>{session?.user?.name}</div>
+        <div className="hidden items-center mr-3 space-x-4 lg:flex nav__item">
+        <div  className="items-center">{session?.user?.name}</div>
           <Link href="/app" className="px-6 py-2 text-white bg-indigo-600 rounded-md md:ml-5">
               LOGIN
           </Link>
           {session?.user ? (
-                    <button onClick={() => signOut()}>Sign Out</button>
+                    <button className="px-6 py-2 text-white bg-indigo-600 rounded-md md:ml-5" onClick={() => signOut()}>Sign Out</button>
                 ) : (
                     <div></div>
                 )}
