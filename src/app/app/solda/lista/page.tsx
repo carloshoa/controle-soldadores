@@ -40,7 +40,7 @@ const App = async () => {
       const cpfFilter: any = document.getElementById('cpfFilter');
       const sineteFilter: any = document.getElementById('sineteFilter')!;
 
-      const filteredWelder = resposta.data.filter((welder: any) => welder.nome.includes(nameFilter.value) && welder.nome.includes(cpfFilter.value) && welder.nome.includes(sineteFilter.value))
+      const filteredWelder = resposta.data.filter((welder: any) => welder.nome.toUpperCase() == nameFilter.value.toUpperCase() && welder.nome.includes(cpfFilter.value.toString()) && welder.nome.includes(sineteFilter.value.toString()))
       setListWelder(filteredWelder)
       console.log('testando filtroooooooooooooooo', filteredWelder)
     } catch (error) {
