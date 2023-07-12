@@ -11,40 +11,6 @@ const App = async () => {
   const [listWelder, setListWelder] = useState<any>([])
   const [active, setActive] = useState<boolean>(false)
 
-  const welderTest = [
-    {
-      sinete: '1',
-      nome: 'teste1',
-      rg: 'teste111',
-      cpf: 'teste1111',
-      ativo: 'off',
-      processo: ['GTAW']
-    },
-    {
-      sinete: '2',
-      nome: 'teste2',
-      rg: 'teste112',
-      cpf: 'teste1112',
-      ativo: 'off',
-      processo: ['GTAW']
-    },
-    {
-      sinete: '3',
-      nome: 'teste3',
-      rg: 'teste113',
-      cpf: 'teste1113',
-      ativo: 'off',
-      processo: ['GTAW']
-    },
-    {
-      sinete: '4',
-      nome: 'teste14',
-      rg: 'teste116',
-      cpf: 'teste1114',
-      ativo: 'off',
-      processo: ['GTAW']
-    }
-  ]
 
   const getWelder = async () => {
     try {
@@ -56,7 +22,6 @@ const App = async () => {
     } catch (error) {
       console.log(error)
     }
-    setListWelder(welderTest)
   }
 
   useEffect(() => {
