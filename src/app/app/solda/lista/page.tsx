@@ -74,11 +74,11 @@ const App = async () => {
     } catch (error) {
       console.log(error)
     }
-    const nameFilter: any = document.getElementById('nameFilter')!.value;
-    const cpfFilter: any = document.getElementById('cpfFilter')!.value;
-    const sineteFilter: any = document.getElementById('sineteFilter')!.value;
+    const nameFilter: any = document.getElementById('nameFilter');
+    const cpfFilter: any = document.getElementById('cpfFilter');
+    const sineteFilter: any = document.getElementById('sineteFilter')!;
 
-    const filteredWelder = welderTest.filter((welder: any) => welder.nome.includes(nameFilter) && welder.nome.includes(cpfFilter) && welder.nome.includes(sineteFilter))
+    const filteredWelder = welderTest.filter((welder: any) => welder.nome.includes(nameFilter.value) && welder.nome.includes(cpfFilter.value) && welder.nome.includes(sineteFilter.value))
     setListWelder(filteredWelder)
     console.log('testando filtroooooooooooooooo', filteredWelder)
 
