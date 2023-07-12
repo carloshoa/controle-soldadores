@@ -8,9 +8,43 @@ import { useEffect, useState } from "react"
 const App = async () => {
 
   const router = useRouter()
-  const [listWelder, setListWelder] = useState([])
-  const [active, setActive] = useState(false)
+  const [listWelder, setListWelder] = useState<any>([])
+  const [active, setActive] = useState<boolean>(false)
 
+  const welderTest = [
+    {
+      sinete: '1',
+      nome: 'teste1',
+      rg: 'teste111',
+      cpf: 'teste1111',
+      ativo: 'off',
+      processo: ['GTAW']
+    },
+    {
+      sinete: '2',
+      nome: 'teste2',
+      rg: 'teste112',
+      cpf: 'teste1112',
+      ativo: 'off',
+      processo: ['GTAW']
+    },
+    {
+      sinete: '3',
+      nome: 'teste3',
+      rg: 'teste113',
+      cpf: 'teste1113',
+      ativo: 'off',
+      processo: ['GTAW']
+    },
+    {
+      sinete: '4',
+      nome: 'teste14',
+      rg: 'teste116',
+      cpf: 'teste1114',
+      ativo: 'off',
+      processo: ['GTAW']
+    }
+  ]
 
   const getWelder = async () => {
     try {
@@ -22,12 +56,34 @@ const App = async () => {
     } catch (error) {
       console.log(error)
     }
+    setListWelder(welderTest)
   }
 
   useEffect(() => {
     getWelder()
     setActive(true)
   }, [])
+
+  const filterWelder = async (valueFilter?: any, typeFilter?: any) => {
+    try {
+
+      const resposta = await axios.post('https://controle-soldadores-tbt.vercel.app/api/listWelder')
+
+      setListWelder(resposta.data)
+
+    } catch (error) {
+      console.log(error)
+    }
+    const nameFilter: any = document.getElementById('nameFilter')!.value;
+    const cpfFilter: any = document.getElementById('cpfFilter')!.value;
+    const sineteFilter: any = document.getElementById('sineteFilter')!.value;
+
+    const filteredWelder = welderTest.filter((welder: any) => welder.nome.includes(nameFilter) && welder.nome.includes(cpfFilter) && welder.nome.includes(sineteFilter))
+    setListWelder(filteredWelder)
+    console.log('testando filtroooooooooooooooo', filteredWelder)
+
+
+  }
 
   const handleList = (sinete: string, active: boolean) => {
     active ? router.push(`/app/solda/lista/${sinete}`) : null
@@ -39,14 +95,14 @@ const App = async () => {
       <div className="flex flex-col w-full">
         <div className="flex flex-col w-full">
           <div className="m-2 w-full center pr-4">
-            <input type="text" id="&quot;form-subscribe-Subscribe" className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Nome" />
+            <input type="text" onChange={(e) => filterWelder(e.target.value, 'nome')} id="nameFilter" className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Nome" />
           </div>
           <div className="flex flex-row ">
             <div className="m-2 w-full  ">
-              <input type="text" id="&quot;form-subscribe-Subscribe" className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="CPF" />
+              <input type="text" onChange={(e) => filterWelder(e.target.value, 'cpf')} id="cpfFilter" className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="CPF" />
             </div>
             <div className="m-2 w-full  ">
-              <input type="text" id="&quot;form-subscribe-Subscribe" className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Sinete" />
+              <input type="text" onChange={(e) => filterWelder(e.target.value, 'sinete')} id="sineteFilter" className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Sinete" />
             </div>
           </div>
         </div>
