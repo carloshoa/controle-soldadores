@@ -43,7 +43,7 @@ const App = async () => {
     const cpfFilter: any = document.getElementById('cpfFilter');
     const sineteFilter: any = document.getElementById('sineteFilter')!;
 
-    const filteredWelder = welderTest.filter((welder: any) => welder.nome.includes(nameFilter.value) && welder.nome.includes(cpfFilter.value) && welder.nome.includes(sineteFilter.value))
+    const filteredWelder = listWelder.filter((welder: any) => welder.nome.includes(nameFilter.value) && welder.nome.includes(cpfFilter.value) && welder.nome.includes(sineteFilter.value))
     setListWelder(filteredWelder)
     console.log('testando filtroooooooooooooooo', filteredWelder)
 
