@@ -35,7 +35,7 @@ export default function ModalConfirm({ handleShow, handleSubmit, dados }: Props)
               <div className="relative p-6 flex-auto">
                 Dados do soldador
                 <p className="my-4 text-slate-500 text-lg leading-relaxed">
-                  {dados.nome}
+                  {dados.welderName}
                 </p>
                 <p className="my-4 text-slate-500 text-lg leading-relaxed">
                   {dados.sinete}

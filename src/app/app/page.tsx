@@ -2,7 +2,7 @@
 import { useSession } from "next-auth/react";
 
 const App = async () => {
-  const { data: session } = useSession({ required: true })
+  useSession({ required: true })
   return <p>
 
   </p>
