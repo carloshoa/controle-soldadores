@@ -4,7 +4,7 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 import { SubmitHandler, useForm } from "react-hook-form"
 import * as yup from "yup"
-import ModalConfirm from "./Modalconfirm"
+import ModalConfirm from "./ModalConfirm"
 
 interface IFormInput {
   welderName: string
