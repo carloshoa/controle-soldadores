@@ -1,11 +1,10 @@
 'use client'
 import { yupResolver } from "@hookform/resolvers/yup"
 import axios from "axios"
-import { usePathname } from "next/navigation"
 import { useEffect, useState } from "react"
 import { SubmitHandler, useForm } from "react-hook-form"
 import * as yup from "yup"
-import Modal from "./Modal"
+import ModalConfirm from "./Modal-confirmação"
 
 interface IFormInput {
   welderName: string
@@ -39,9 +38,8 @@ const welderSchema = yup
 const App = async () => {
 
   const [showModal, setShowModal] = useState(false)
-  const Path = usePathname()
-  console.log('testando use path....', Path)
-  const { register, handleSubmit, formState, setError, watch, } = useForm<IFormInput>({
+
+  const { getValues, register, handleSubmit, formState, setError, watch, } = useForm<IFormInput>({
     resolver: async (data, context, options) => {
       // you can debug your validation schema here
       console.log("formData", data)
@@ -54,7 +52,13 @@ const App = async () => {
   })
 
   const onSubmit: SubmitHandler<IFormInput> = async (data) => {
-    console.log('dados do formulario', data)
+
+    // inserir modal de confirmação //
+
+    // se positivo segue 
+
+    // senão reseta form
+
     try {
       const resposta = await axios.post('https://controle-soldadores-tbt.vercel.app/api/createWelder', {
         data,
@@ -68,7 +72,7 @@ const App = async () => {
 
       if ((resposta.status) === 200) {
         console.log("soldador cadastrado com sucesso")
-        setShowModal(!showModal)
+        // setShowModal(!showModal)
         // redirect('/app/solda/soldadores')
       }
 
@@ -120,7 +124,7 @@ const App = async () => {
 
 
       <section className="h-screen mt-5 white">
-        <form onSubmit={handleSubmit(onSubmit)} className="container max-w-full mx-auto shadow-md md:w-10/12">
+        <form onSubmit={() => setShowModal(true)} className="container max-w-full mx-auto shadow-md md:w-10/12">
           {/* <div className="pre-4 border-t-2 border-indigo-400 rounded-lg bg-gray-500 ">
             <div className="max-w-sm mx-auto md:w-full md:mx-0">
               <div className="inline-flex items-center space-x-4 p-10">
@@ -133,7 +137,8 @@ const App = async () => {
               <h2 className="max-w-sm mx-auto md:w-3/12">
                 INFORMAÇÕES PESSOAIS
               </h2>
-              {showModal ? (<Modal handleShow={updateShowModal} show={true}></Modal>) : (<div> </div>)}
+              {showModal ? (<ModalConfirm handleShow={updateShowModal} handleSubmit={handleSubmit(onSubmit)} dados={getValues()} show={true}></ModalConfirm>) : (<div> </div>)}
+              {/* {showModal ? (<Modal handleShow={updateShowModal} show={true}></Modal>) : (<div> </div>)} */}
               <div className="max-w-2xl mx-auto md:w-9/12">
                 <div className=" relative mb-2">
                   <input  {...register("welderName")} type="text" id="welder-info-name" className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Nome" />
