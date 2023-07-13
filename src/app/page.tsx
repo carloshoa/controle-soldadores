@@ -4,7 +4,8 @@
 import Head from "next/head";
 import Navbar from "./(componentes)/navbar";
 import SectionTitle from "./(componentes)/sectionTitle";
-
+import { Suspense } from "react";
+import Loading from './loading'
 
 export default function Home() {
 
@@ -20,6 +21,7 @@ export default function Home() {
             </Head>
 
             <Navbar />
+            <Suspense fallback={<Loading/>}></Suspense>
             <SectionTitle
                 pretitle="Controle de Qualidade"
                 title="Para acesso solicitar cadastro ao responsável pelo CQ" />
