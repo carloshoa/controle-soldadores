@@ -1,15 +1,15 @@
 'use client'
-import React from "react";
+
 
 interface Props {
-  show: boolean
+  // show: boolean
   handleShow: Function
   handleSubmit: Function
   dados: any
 }
 
-export default function ModalConfirm({ handleShow, show, handleSubmit, dados }: Props) {
-  const [showModal, setShowModal] = React.useState(show);
+export default function ModalConfirm({ handleShow, handleSubmit, dados }: Props) {
+  // const [showModal, setShowModal] = React.useState(show);
 
   // useEffect(() => {
   //   if (!showModal) {
@@ -62,7 +62,7 @@ export default function ModalConfirm({ handleShow, show, handleSubmit, dados }: 
         </div>
         <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
       </>
-      )
+
     </>
   );
 }

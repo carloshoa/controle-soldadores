@@ -22,6 +22,9 @@ yup.addMethod(yup.array, 'unique', function (message, mapper = (a: any) => a) {
   });
 });
 
+const path = 'http://localhost:3000'
+// const path = 'https://controle-soldadores-tbt.vercel.app'
+
 const welderSchema = yup
   .object().
   shape({
@@ -60,7 +63,7 @@ const App = async () => {
     // senão reseta form
 
     try {
-      const resposta = await axios.post('https://controle-soldadores-tbt.vercel.app/api/createWelder', {
+      const resposta = await axios.post(path + '/api/createWelder', {
         data,
         headers: {
           "Content-Type": "application/json"
@@ -136,7 +139,7 @@ const App = async () => {
               <h2 className="max-w-sm mx-auto md:w-3/12">
                 INFORMAÇÕES PESSOAIS
               </h2>
-              {showModal ? (<ModalConfirm handleShow={updateShowModal} handleSubmit={handleSubmit(onSubmit)} dados={getValues()} show={true}></ModalConfirm>) : (<div> </div>)}
+              {showModal ? (<ModalConfirm handleShow={updateShowModal} handleSubmit={handleSubmit(onSubmit)} dados={getValues()} ></ModalConfirm>) : (<div> </div>)}
               {/* {showModal ? (<Modal handleShow={updateShowModal} show={true}></Modal>) : (<div> </div>)} */}
               <div className="max-w-2xl mx-auto md:w-9/12">
                 <div className=" relative mb-2">
