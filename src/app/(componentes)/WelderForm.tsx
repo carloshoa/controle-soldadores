@@ -1,7 +1,7 @@
 'use client'
 import { yupResolver } from "@hookform/resolvers/yup"
 import axios from "axios"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { SubmitHandler, useForm } from "react-hook-form"
 import * as yup from "yup"
 import ModalConfirm from "./ModalConfirm"
@@ -23,7 +23,7 @@ yup.addMethod(yup.array, 'unique', function (message, mapper = (a: any) => a) {
 });
 
 // const path = 'http://localhost:3000'
-const path = 'https://controle-soldadores-tbt.vercel.app'
+// const path = 'https://controle-soldadores-tbt.vercel.app'
 
 const welderSchema = yup
   .object().
@@ -43,7 +43,7 @@ const App = async () => {
   const [showModal, setShowModal] = useState(false)
   const [approvedDate, setApprovedDate] = useState(false)
 
-  const { getValues, register, handleSubmit, formState, setError, watch, } = useForm<IFormInput>({
+  const { getValues, register, handleSubmit, formState, setError } = useForm<IFormInput>({
     resolver: async (data, context, options) => {
       // you can debug your validation schema here
       console.log("formData", data)
@@ -65,7 +65,7 @@ const App = async () => {
 
 
       try {
-        const resposta = await axios.post(path + '/api/createWelder', {
+        const resposta = await axios.post('https://controle-soldadores-tbt.vercel.app/api/createWelder', {
           data,
           headers: {
             "Content-Type": "application/json"
@@ -111,9 +111,9 @@ const App = async () => {
   }
 
 
-  // useEffect(() => {
+  useEffect(() => {
 
-  // }, [showModal]); // use entire formState object as optional array arg in useEffect, not individual properties of itros ....,",errors.welderName)
+  }, [showModal]); // use entire formState object as optional array arg in useEffect, not individual properties of itros ....,",errors.welderName)
 
   const updateShowModal = () => {
     setShowModal(false)
@@ -131,7 +131,7 @@ const App = async () => {
 
 
       <section className="h-screen mt-5 white">
-        <form onSubmit={() => handleSubmit(onSubmit)} className="container max-w-full mx-auto shadow-md md:w-10/12">
+        <form onSubmit={handleSubmit(onSubmit)} className="container max-w-full mx-auto shadow-md md:w-10/12">
           {/* <div className="pre-4 border-t-2 border-indigo-400 rounded-lg bg-gray-500 ">
             <div className="max-w-sm mx-auto md:w-full md:mx-0">
               <div className="inline-flex items-center space-x-4 p-10">
