@@ -23,7 +23,7 @@ yup.addMethod(yup.array, 'unique', function (message, mapper = (a: any) => a) {
 });
 
 // const path = 'http://localhost:3000'
-// const path = 'https://controle-soldadores-tbt.vercel.app'
+const path = 'https://controle-soldadores-tbt.vercel.app'
 
 const welderSchema = yup
   .object().
@@ -41,6 +41,7 @@ const welderSchema = yup
 const App = async () => {
 
   const [showModal, setShowModal] = useState(false)
+  const [approvedDate, setApprovedDate] = useState(false)
 
   const { getValues, register, handleSubmit, formState, setError, watch, } = useForm<IFormInput>({
     resolver: async (data, context, options) => {
@@ -57,38 +58,40 @@ const App = async () => {
   const onSubmit: SubmitHandler<IFormInput> = async (data) => {
     console.log('data.....', data)
     // inserir modal de confirmação //
-
+    console.log('teste ....')
     // se positivo segue 
 
     // senão reseta form
-
-    try {
-      const resposta = await axios.post('https://controle-soldadores-tbt.vercel.app/api/createWelder', {
-        data,
-        headers: {
-          "Content-Type": "application/json"
-        },
-      })
-
-      console.log('tipo da resposta', (resposta))
+    if (approvedDate) {
 
 
-      if ((resposta.status) === 200) {
-        console.log("soldador cadastrado com sucesso")
-        // setShowModal(!showModal)
-        // redirect('/app/solda/soldadores')
+      try {
+        const resposta = await axios.post(path + '/api/createWelder', {
+          data,
+          headers: {
+            "Content-Type": "application/json"
+          },
+        })
+
+        console.log('tipo da resposta', (resposta))
+
+
+        if ((resposta.status) === 200) {
+          console.log("soldador cadastrado com sucesso")
+          // setShowModal(!showModal)
+          // redirect('/app/solda/soldadores')
+        }
+
+      } catch (error: any) {
+
+        // if (resposta.data.error) {
+        setError("welderName", {
+          type: "manual",
+          message: error.response.data?.error,
+        })
+        // }
       }
-
-    } catch (error: any) {
-
-      // if (resposta.data.error) {
-      setError("welderName", {
-        type: "manual",
-        message: error.response.data?.error,
-      })
-      // }
     }
-
     // setShowModal(false)
 
     // setValue("welderRg","")
@@ -116,6 +119,9 @@ const App = async () => {
   const updateShowModal = () => {
     setShowModal(false)
   }
+  const handleApprovedDate = () => {
+    setApprovedDate(false)
+  }
 
   return (
 
@@ -126,7 +132,7 @@ const App = async () => {
 
 
       <section className="h-screen mt-5 white">
-        <form onSubmit={() => setShowModal(true)} className="container max-w-full mx-auto shadow-md md:w-10/12">
+        <form onSubmit={() => handleSubmit(onSubmit)} className="container max-w-full mx-auto shadow-md md:w-10/12">
           {/* <div className="pre-4 border-t-2 border-indigo-400 rounded-lg bg-gray-500 ">
             <div className="max-w-sm mx-auto md:w-full md:mx-0">
               <div className="inline-flex items-center space-x-4 p-10">
@@ -139,7 +145,7 @@ const App = async () => {
               <h2 className="max-w-sm mx-auto md:w-3/12">
                 INFORMAÇÕES PESSOAIS
               </h2>
-              {showModal ? (<ModalConfirm handleShow={updateShowModal} handleSubmit={handleSubmit(onSubmit)} dados={getValues()} ></ModalConfirm>) : (<div> </div>)}
+              {showModal ? (<ModalConfirm handleShow={updateShowModal} handleSubmit={handleApprovedDate} dados={getValues()} ></ModalConfirm>) : (<div> </div>)}
               {/* {showModal ? (<Modal handleShow={updateShowModal} show={true}></Modal>) : (<div> </div>)} */}
               <div className="max-w-2xl mx-auto md:w-9/12">
                 <div className=" relative mb-2">

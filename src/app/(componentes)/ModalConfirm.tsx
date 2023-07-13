@@ -50,8 +50,8 @@ export default function ModalConfirm({ handleShow, handleSubmit, dados }: Props)
                   onClick={() => {
                     console.log('dadoss....', dados)
                     console.log('handleSubmit....', handleSubmit)
-                    handleSubmit(dados)
                     handleShow()
+                    handleSubmit()
                   }}
                 >
                   OK
