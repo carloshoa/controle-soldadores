@@ -7,7 +7,7 @@ interface Props {
 
 export default function Modal({ handleShow, show }: Props) {
   const [showModal, setShowModal] = React.useState(show);
-  
+
   useEffect(() => {
     if (!showModal) {
       handleShow()
@@ -31,7 +31,7 @@ export default function Modal({ handleShow, show }: Props) {
                 {/*body*/}
                 <div className="relative p-6 flex-auto">
                   <p className="my-4 text-slate-500 text-lg leading-relaxed">
-                    Soldador Cadastrado com Sucesso !
+                    Erro no cadastro!
                   </p>
                 </div>
                 {/*footer*/}
