@@ -194,7 +194,8 @@ const App = async () => {
                         {welder.rg}
                       </td>
                       <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                        {welder.processos ? welder.processos.split(' ') : ""}
+                        {console.log(welder.processo, ' ', typeof (welder.processo), ' ', welder.processo.split(' '))}
+                        {welder.processos}
                       </td>
                       <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                         {welder.ativo}
