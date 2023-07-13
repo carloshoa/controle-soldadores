@@ -4,6 +4,7 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 import { SubmitHandler, useForm } from "react-hook-form"
 import * as yup from "yup"
+import Modal from "./Modal"
 import ModalConfirm from "./ModalConfirm"
 
 interface IFormInput {
@@ -41,6 +42,7 @@ const welderSchema = yup
 const App = async () => {
 
   const [showModal, setShowModal] = useState(false)
+  const [showModalConfirm, setShowModalConfirm] = useState(false)
   const [approvedDate, setApprovedDate] = useState(false)
 
   const { getValues, register, handleSubmit, formState, setError } = useForm<IFormInput>({
@@ -90,6 +92,8 @@ const App = async () => {
         })
         // }
       }
+    } else {
+      setShowModal(true)
     }
     // setShowModal(false)
 
@@ -118,6 +122,10 @@ const App = async () => {
   const updateShowModal = () => {
     setShowModal(false)
   }
+  const updateShowModalConfirm = () => {
+    setShowModalConfirm(false)
+  }
+
   const handleApprovedDate = () => {
     setApprovedDate(false)
   }
@@ -144,8 +152,8 @@ const App = async () => {
               <h2 className="max-w-sm mx-auto md:w-3/12">
                 INFORMAÇÕES PESSOAIS
               </h2>
-              {showModal ? (<ModalConfirm handleShow={updateShowModal} handleSubmit={handleApprovedDate} dados={getValues()} ></ModalConfirm>) : (<div> </div>)}
-              {/* {showModal ? (<Modal handleShow={updateShowModal} show={true}></Modal>) : (<div> </div>)} */}
+              {showModalConfirm ? (<ModalConfirm handleShow={updateShowModalConfirm} handleSubmit={handleApprovedDate} dados={getValues()} ></ModalConfirm>) : (<div> </div>)}
+              {showModal ? (<Modal handleShow={updateShowModal} show={true}></Modal>) : (<div> </div>)}
               <div className="max-w-2xl mx-auto md:w-9/12">
                 <div className=" relative mb-2">
                   <input  {...register("welderName")} type="text" id="welder-info-name" className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Nome" />
@@ -163,9 +171,7 @@ const App = async () => {
                   <input {...register("welderRg")} type="text" id="welder-info-rg" className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="RG" />
                 </div>
                 <div className=" text-red-500 ">
-
                   {formState.errors.welderRg && <span> {formState.errors.welderRg.message}</span>}
-
                 </div>
               </div>
             </div>
@@ -191,8 +197,6 @@ const App = async () => {
                           SMAW
                         </span>
                       </div>
-
-
                       <div className="mr-5">
                         <div className="relative inline-block w-10 mr-2 align-middle select-none">
                           <input {...register("FCAW")} type="checkbox" name="FCAW" id="FCAW" className="checked:bg-blue-500 outline-none focus:outline-none right-4 checked:right-0 duration-200 ease-in absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer" />
@@ -214,7 +218,6 @@ const App = async () => {
                         </span>
                       </div>
                     </div>
-
                   </div>
                 </div>
                 <div>
@@ -224,13 +227,10 @@ const App = async () => {
                   <div className="text-red-500">
                     {formState.errors.sinete && <span> {formState.errors.sinete.message}</span>}
                   </div>
-
                 </div>
               </div>
             </div>
-
             <hr />
-
             <div className="w-full px-4 pb-4 ml-auto text-gray-500 md:w-1/3">
               <button type="submit" onClick={() => setShowModal(true)} className="py-2 px-4  bg-blue-600 hover:bg-blue-700 focus:ring-blue-500 focus:ring-offset-blue-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
                 SALVAR
