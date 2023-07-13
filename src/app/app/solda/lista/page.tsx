@@ -1,8 +1,9 @@
 'use client'
+import Loading from "@/app/loading"
 import axios from "axios"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
-import { useEffect, useState } from "react"
+import { Suspense, useEffect, useState } from "react"
 
 
 const App = async () => {
@@ -168,6 +169,7 @@ const App = async () => {
                   <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
                     Status
                   </th>
+                  <Suspense fallback={<Loading />}></Suspense>
                 </tr>
               </thead>
               <tbody>
