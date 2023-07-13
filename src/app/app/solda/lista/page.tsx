@@ -143,6 +143,8 @@ const App = async () => {
         </div>
       </div>
     </form>
+    <Suspense fallback={<Loading />}></Suspense>
+
     {/* component */}
     <div className="flex flex-col">
       <div className="overflow-x-auto sm:mx-0.5 lg:mx-0.5">
@@ -169,7 +171,6 @@ const App = async () => {
                   <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
                     Status
                   </th>
-                  <Suspense fallback={<Loading />}></Suspense>
                 </tr>
               </thead>
               <tbody>
@@ -193,7 +194,7 @@ const App = async () => {
                         {welder.rg}
                       </td>
                       <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                        {welder.processos}
+                        {welder.processos.split(' ')}
                       </td>
                       <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                         {welder.ativo}
