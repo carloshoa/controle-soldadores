@@ -22,7 +22,7 @@ yup.addMethod(yup.array, 'unique', function (message, mapper = (a: any) => a) {
   });
 });
 
-const path = 'http://localhost:3000'
+// const path = 'http://localhost:3000'
 // const path = 'https://controle-soldadores-tbt.vercel.app'
 
 const welderSchema = yup
@@ -63,7 +63,7 @@ const App = async () => {
     // senão reseta form
 
     try {
-      const resposta = await axios.post(path + '/api/createWelder', {
+      const resposta = await axios.post('https://controle-soldadores-tbt.vercel.app/api/createWelder', {
         data,
         headers: {
           "Content-Type": "application/json"
