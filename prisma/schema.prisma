@@ -18,7 +18,7 @@ model Welder {
   rg String  
   sinete String 
   processos String[]
-  ativo String?
+  ativo String? @default("Inativo")
 }
 
 model Account {
