@@ -55,7 +55,7 @@ const App = async () => {
   })
 
   const onSubmit: SubmitHandler<IFormInput> = async (data) => {
-
+    console.log('data.....', data)
     // inserir modal de confirmação //
 
     // se positivo segue 
