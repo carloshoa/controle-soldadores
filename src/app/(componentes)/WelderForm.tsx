@@ -1,7 +1,7 @@
 'use client'
 import { yupResolver } from "@hookform/resolvers/yup"
 import axios from "axios"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { SubmitHandler, useForm } from "react-hook-form"
 import * as yup from "yup"
 import Modal from "./Modal"
@@ -94,6 +94,7 @@ const App = async () => {
       }
     } else {
       setShowModal(true)
+      setShowModalConfirm(false)
     }
     // setShowModal(false)
 
@@ -115,9 +116,9 @@ const App = async () => {
   }
 
 
-  useEffect(() => {
+  // useEffect(() => {
 
-  }, [showModal]); // use entire formState object as optional array arg in useEffect, not individual properties of itros ....,",errors.welderName)
+  // }, [showModal]); // use entire formState object as optional array arg in useEffect, not individual properties of itros ....,",errors.welderName)
 
   const updateShowModal = () => {
     setShowModal(false)
