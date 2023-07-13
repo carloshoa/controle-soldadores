@@ -44,15 +44,44 @@ const App = async () => {
       console.log('item 2', cpfFilter.value.toString())
       console.log('item 3', sineteFilter.value.toString())
 
-      const filteredWelder = resposta.data
-        .filter((welder: any) =>
-          welder.nome.toUpperCase() === nameFilter.value.toUpperCase()
-          && welder.cpf.includes(cpfFilter.value.toString())
-          && welder.sinete.includes(sineteFilter.value.toString())
+      const filteredWelder1 = resposta.data
+        .filter((welder: any) => {
+          if (nameFilter.value != "") {
+            return welder.nome.toUpperCase() == nameFilter.value.toUpperCase()
+          } else {
+            return nameFilter.value
+          }
+        })
+
+      const filteredWelder2 = filteredWelder1
+        .filter((welder: any) => {
+          if (cpfFilter.value != "") {
+            return welder.cpf.includes(cpfFilter.value.toString())
+          } else {
+            return cpfFilter.value
+          }
+        })
+      const filteredWelder3 = filteredWelder2
+        .filter((welder: any) => {
+          if (sineteFilter.value != "") {
+            return welder.sinete.includes(sineteFilter.value.toString())
+          } else {
+
+            return sineteFilter.value
+          }
+        }
         )
 
-      setListWelder(filteredWelder)
-      console.log('testando filtroooooooooooooooo', filteredWelder)
+      if (sineteFilter.value != "" && cpfFilter.value != "" && nameFilter.value != "") {
+        setListWelder(filteredWelder3)
+
+      } else {
+
+        setListWelder(resposta.data)
+      }
+
+
+      console.log('testando filtroooooooooooooooo', listWelder)
     } catch (error) {
       console.log(error)
     }
