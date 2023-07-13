@@ -39,12 +39,17 @@ const App = async () => {
       const nameFilter: any = document.getElementById('nameFilter');
       const cpfFilter: any = document.getElementById('cpfFilter');
       const sineteFilter: any = document.getElementById('sineteFilter');
-      console.log('item 1', nameFilter.toUpperCase())
+
+      console.log('item 1', nameFilter.value.toUpperCase())
       console.log('item 2', cpfFilter.value.toString())
       console.log('item 3', sineteFilter.value.toString())
 
-      const filteredWelder = resposta.data.filter((welder: any) => welder.nome.toUpperCase() == nameFilter.value.toUpperCase() && welder.cpf.includes(cpfFilter.value.toString()) && welder.sinete.includes(sineteFilter.value.toString())
-      )
+      const filteredWelder = resposta.data
+        .filter((welder: any) =>
+          welder.nome.toUpperCase() === nameFilter.value.toUpperCase()
+          && welder.cpf.includes(cpfFilter.value.toString())
+          && welder.sinete.includes(sineteFilter.value.toString())
+        )
 
       setListWelder(filteredWelder)
       console.log('testando filtroooooooooooooooo', filteredWelder)
