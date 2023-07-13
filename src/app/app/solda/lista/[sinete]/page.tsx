@@ -3,7 +3,7 @@ import axios from "axios"
 
 const App = async ({ params }: any) => {
 
-  const resposta = await axios.get(`http://localhost:3000/api/listWelder/${params.sinete}`, {
+  const resposta = await axios.get(`https://controle-soldadores-tbt.vercel.app/api/listWelder/${params.sinete}`, {
     headers: {
       "Content-Type": "application/json"
     },
@@ -11,7 +11,7 @@ const App = async ({ params }: any) => {
 
   const soldador = resposta.data[0]
   console.log('resposta;;;;;;;;;;;;;;', soldador)
- 
+
   return (
     <div>
       <div className="container mx-auto my-5 p-5">
