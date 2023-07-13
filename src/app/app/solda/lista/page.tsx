@@ -43,42 +43,25 @@ const App = async () => {
       console.log('item 1', nameFilter.value.toUpperCase())
       console.log('item 2', cpfFilter.value.toString())
       console.log('item 3', sineteFilter.value.toString())
-
-      const filteredWelder1 = resposta.data
-        .filter((welder: any) => {
-          if (nameFilter.value != "") {
-            return welder.nome.toUpperCase() == nameFilter.value.toUpperCase()
-          } else {
-            return nameFilter.value
-          }
-        })
-
-      const filteredWelder2 = filteredWelder1
-        .filter((welder: any) => {
-          if (cpfFilter.value != "") {
-            return welder.cpf.includes(cpfFilter.value.toString())
-          } else {
-            return cpfFilter.value
-          }
-        })
-      const filteredWelder3 = filteredWelder2
-        .filter((welder: any) => {
-          if (sineteFilter.value != "") {
-            return welder.sinete.includes(sineteFilter.value.toString())
-          } else {
-
-            return sineteFilter.value
-          }
-        }
-        )
-
-      if (sineteFilter.value != "" && cpfFilter.value != "" && nameFilter.value != "") {
-        setListWelder(filteredWelder3)
-
-      } else {
-
-        setListWelder(resposta.data)
+      let filteredWelder = resposta.data
+      if (nameFilter.value) {
+        console.log('teste do filtro, item 1 :', resposta.data[0].nome.toUpperCase())
+        console.log('teste do filtro, item 1 :', nameFilter.value.toUpperCase())
+        filteredWelder = resposta.data.filter((welder: any) => welder.nome.toUpperCase() == nameFilter.value.toUpperCase())
       }
+      if (cpfFilter.value) {
+        console.log('teste do filtro, item 1 :', resposta.data[0].cpf)
+        console.log('teste do filtro, item 1 :', cpfFilter.value.toString())
+        filteredWelder = resposta.data.filter((welder: any) => welder.cpf.includes(cpfFilter.value.toString()))
+      }
+      if (sineteFilter.value) {
+        console.log('teste do filtro, item 1 :', resposta.data[0].sinete)
+        console.log('teste do filtro, item 1 :', sineteFilter.value.toString())
+        filteredWelder = resposta.data.filter((welder: any) => welder.sinete.includes(sineteFilter.value.toString()))
+      }
+
+      setListWelder(filteredWelder)
+
 
 
       console.log('testando filtroooooooooooooooo', listWelder)
