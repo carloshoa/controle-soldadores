@@ -2,8 +2,8 @@ import { listWelder } from "@/app/db/listWelder/route";
 import { NextResponse } from "next/server";
 
 export async function POST(req: any, res: any) {
-  console.log('chegou antes do try catch')
 
+  
   try {
 
     console.log('chegou na api...')
