@@ -47,7 +47,7 @@ const App = async () => {
       if (nameFilter.value) {
         console.log('teste do filtro, item 1 :', resposta.data[0].nome.toUpperCase())
         console.log('teste do filtro, item 1 :', nameFilter.value.toUpperCase())
-        filteredWelder = resposta.data.filter((welder: any) => welder.nome.toUpperCase() == nameFilter.value.toUpperCase())
+        filteredWelder = resposta.data.filter((welder: any) => welder.nome.toUpperCase().includes(nameFilter.value.toUpperCase()))
       }
       if (cpfFilter.value) {
         console.log('teste do filtro, item 1 :', resposta.data[0].cpf)
@@ -64,7 +64,7 @@ const App = async () => {
 
 
 
-      console.log('testando filtroooooooooooooooo', listWelder)
+      console.log('testando filtroooooooooooooooo', filteredWelder)
     } catch (error) {
       console.log(error)
     }
